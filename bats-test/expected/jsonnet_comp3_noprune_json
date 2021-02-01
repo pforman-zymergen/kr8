@@ -1,0 +1,21 @@
+{
+    "cluster": {
+        "cluster_name": "bats",
+        "cluster_type": "fake"
+    },
+    "config": {
+        "image": "comp3:latest",
+        "namespace": "default",
+        "p_empty_list_param": [],
+        "p_empty_object_param": {},
+        "p_empty_string_param": "",
+        "p_null_param": null,
+        "release_name": "comp3"
+    },
+    "empty_params": {
+        "list_param": [],
+        "null_param": null,
+        "object_param": {},
+        "string_param": ""
+    }
+}

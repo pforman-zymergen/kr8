@@ -83,6 +83,36 @@ CLUSTER=bats
   diff <(echo "$output") <(echo "$expected")
 }
 
+# Null/empty params
+@test "Check render jsonnet component parsing with null params (json)" {
+  expected=$(<expected/jsonnet_comp3_json)
+  run $KR8 $KR8_ARGS render jsonnet -c bats -C comp3 -F json data/components/comp3/comp3.jsonnet
+  [ "$status" -eq 0 ]
+  diff <(echo "$output") <(echo "$expected")
+}
+
+@test "Check render jsonnet component parsing with null params (yaml)" {
+  expected=$(<expected/jsonnet_comp3_yaml)
+  run $KR8 $KR8_ARGS render jsonnet -c bats -C comp3 -F yaml data/components/comp3/comp3.jsonnet
+  [ "$status" -eq 0 ]
+  diff <(echo "$output") <(echo "$expected")
+}
+
+# Null/empty params, with --prune=false top-level pruning
+@test "Check render jsonnet component parsing with null params, no pruning (json)" {
+  expected=$(<expected/jsonnet_comp3_noprune_json)
+  run $KR8 $KR8_ARGS render jsonnet --prune=false -c bats -C comp3 -F json data/components/comp3/comp3.jsonnet
+  [ "$status" -eq 0 ]
+  diff <(echo "$output") <(echo "$expected")
+}
+
+@test "Check render jsonnet component parsing with null params, no pruning (yaml)" {
+  expected=$(<expected/jsonnet_comp3_noprune_yaml)
+  run $KR8 $KR8_ARGS render jsonnet --prune=false -c bats -C comp3 -F yaml data/components/comp3/comp3.jsonnet
+  [ "$status" -eq 0 ]
+  diff <(echo "$output") <(echo "$expected")
+}
+
 # Test with --clusterparams
 @test "Check render jsonnet parsing with --clusterparams" {
   expected=$(<expected/jsonnet_comp2_with_file_stream)

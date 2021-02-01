@@ -9,6 +9,9 @@
         },
         "comp2": {
             "path": "components/comp2"
+        },
+        "comp3": {
+            "path": "components/comp3"
         }
     },
     "comp2": {

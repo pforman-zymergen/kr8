@@ -9,6 +9,9 @@
         },
         "comp2": {
             "path": "components/comp2"
+        },
+        "comp3": {
+            "path": "components/comp3"
         }
     },
     "comp1": {
@@ -24,5 +27,14 @@
         "p_component": "component",
         "p_site_params": "site_params",
         "release_name": "comp2"
+    },
+    "comp3": {
+        "image": "comp3:latest",
+        "namespace": "default",
+        "p_empty_list_param": [],
+        "p_empty_object_param": {},
+        "p_empty_string_param": "",
+        "p_null_param": null,
+        "release_name": "comp3"
     }
 }

@@ -23,3 +23,11 @@ $KR8 $KR8_ARGS jsonnet render -C comp1 -F stream data/components/comp1/comp1_lis
 # With --clusterparams
 $KR8 $KR8_ARGS jsonnet render -C comp2 -F yaml data/components/comp2/comp2.jsonnet \
   --clusterparams data/misc/cluster_params.jsonnet > expected/jsonnet_comp2_with_file_yaml
+
+## Object/parameter pruning
+# With null/empty params
+$KR8 $KR8_ARGS jsonnet render -C comp3 -F json data/components/comp3/comp3.jsonnet > expected/jsonnet_comp3_json
+$KR8 $KR8_ARGS jsonnet render -C comp3 -F yaml data/components/comp3/comp3.jsonnet > expected/jsonnet_comp3_yaml
+# Again without top-level pruning
+$KR8 $KR8_ARGS jsonnet render --prune=false -C comp3 -F json data/components/comp3/comp3.jsonnet > expected/jsonnet_comp3_noprune_json
+$KR8 $KR8_ARGS jsonnet render --prune=false -C comp3 -F yaml data/components/comp3/comp3.jsonnet > expected/jsonnet_comp3_noprune_yaml

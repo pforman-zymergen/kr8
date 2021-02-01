@@ -1,0 +1,11 @@
+cluster:
+  cluster_name: bats
+  cluster_type: fake
+config:
+  image: comp3:latest
+  namespace: default
+  p_empty_string_param: ""
+  release_name: comp3
+empty_params:
+  string_param: ""
+

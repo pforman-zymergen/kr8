@@ -102,3 +102,19 @@ CLUSTER=bats
   [ "$status" -eq 2 ]
   #diff <(echo "$output") <(echo "$expected")
 }
+
+# Check null/empty params behavior with and without prune=false
+@test "Check jsonnet render of component with null params" {
+  expected=$(<expected/jsonnet_comp3_json)
+  run $KR8 $KR8_ARGS jsonnet render -c bats -C comp3 -F json data/components/comp3/comp3.jsonnet
+  [ "$status" -eq 0 ]
+  diff <(echo "$output") <(echo "$expected")
+}
+
+# Check null/empty params behavior with and without prune=false
+@test "Check jsonnet render of component with null params, no top-level pruning" {
+  expected=$(<expected/jsonnet_comp3_noprune_json)
+  run $KR8 $KR8_ARGS jsonnet render --prune=false -c bats -C comp3 -F json data/components/comp3/comp3.jsonnet
+  [ "$status" -eq 0 ]
+  diff <(echo "$output") <(echo "$expected")
+}

@@ -14,14 +14,18 @@
             "path": "components/comp3"
         }
     },
-    "comp1": {
-        "image": "comp1:1.0.0",
-        "namespace": "default",
-        "release_name": "comp1"
-    },
     "comp2": {
         "p_cluster": "cluster",
         "p_cluster_jsonnet": "cluster_jsonnet",
         "p_site_params": "site_params"
+    },
+    "comp3": {
+        "image": "comp3:latest",
+        "namespace": "default",
+        "p_empty_list_param": [],
+        "p_empty_object_param": {},
+        "p_empty_string_param": "",
+        "p_null_param": null,
+        "release_name": "comp3"
     }
 }

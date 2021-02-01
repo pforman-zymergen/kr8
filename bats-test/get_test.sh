@@ -46,6 +46,13 @@ CLUSTER=bats
   diff <(echo "$output") <(echo "$expected")
 }
 
+@test "Check get params for one component with null parameters" {
+  expected=$(<expected/get_params_comp3)
+  run $KR8 $KR8_ARGS get params -c "$CLUSTER" -C comp3
+  [ "$status" -eq 0 ]
+  diff <(echo "$output") <(echo "$expected")
+}
+
 # Not implemented in "get", only "cluster"
 # FIXME: why?
 @test "Check get params with file override - FAIL" {

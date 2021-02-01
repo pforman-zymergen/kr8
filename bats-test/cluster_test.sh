@@ -54,6 +54,14 @@ CLUSTER=bats
   diff <(echo "$output") <(echo "$expected")
 }
 
+# Check behavior with null/empty params
+@test "Check cluster params for component with null parameters" {
+  expected=$(<expected/cluster_params_comp3)
+  run $KR8 $KR8_ARGS cluster params -c "$CLUSTER" -C comp3
+  [ "$status" -eq 0 ]
+  diff <(echo "$output") <(echo "$expected")
+}
+
 # Check behavior on a component that doesn't exist
 @test "Check cluster params with unset component (-P)" {
   # This is wonky because of "echo" and fmt.Println, but matches anyway
