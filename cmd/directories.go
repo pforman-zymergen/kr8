@@ -141,7 +141,7 @@ func renderClusterParams(cmd *cobra.Command, clusterName string, componentName s
 		params = append(params, clusterParams)
 	}
 
-	compParams := renderJsonnet(cmd, params, "", true, "")
+	compParams := renderJsonnet(cmd, params, "", false, "")
 
 	compString := gjson.Get(compParams, "_components")
 	err := json.Unmarshal([]byte(compString.String()), &componentMap)
@@ -162,7 +162,7 @@ func renderClusterParams(cmd *cobra.Command, clusterName string, componentName s
 	}
 	componentDefaultsMerged = componentDefaultsMerged + "}"
 
-	compParams = renderJsonnet(cmd, params, "", true, componentDefaultsMerged)
+	compParams = renderJsonnet(cmd, params, "", false, componentDefaultsMerged)
 
 	return compParams
 }
